@@ -26,37 +26,57 @@ A full-stack **Task Manager** application built with **Next.js**, **Tailwind CSS
 
 ---
 
-## 📁 Project Structure
+
+📁 Project Structure
 MiniTaskManager/
-├── mini-task-manager-frontend/                 # Next.js frontend
-│   ├── pages/                                                          # Main page (index.js)
-│   └── ...                                                                       # Tailwind, config, styles
 │
-├── mini-task-manager-backend/                 # Node.js backend
-│   ├── server.js                                                       # Express server with routes
-│   ├── db.js                                                               # PostgreSQL connection
-│   ├── routes/tasks.js                                 # Task routes (CRUD logic)
-│   ├── .env                                                       # Environment variables
-│   └── public/                                                    # Optional for hosting frontend statically
+├── mini-task-manager-frontend/      # Frontend built with Next.js & Tailwind CSS
+│   ├── pages/                       # All route pages (e.g., index.js)
+│   ├── public/                      # Public assets
+│   ├── styles/                      # Global styles (if any)
+│   ├── tailwind.config.js          # Tailwind configuration
+│   ├── postcss.config.js           # PostCSS configuration
+│   ├── package.json                # Frontend dependencies and scripts
+│   └── ...                         # Other frontend files
 │
-└── README.md                                               # Project documentation
+├── mini-task-manager-backend/       # Backend built with Node.js, Express, PostgreSQL
+│   ├── db.js                        # Database connection setup
+│   ├── routes/
+│   │   └── tasks.js                # All API routes for tasks
+│   ├── server.js                   # Main Express server entry point
+│   ├── .env                        # Environment variables (excluded from Git)
+│   ├── package.json                # Backend dependencies and scripts
+│   └── ...                         # Other backend files
+│
+├── .gitignore                       # Git ignore rules
+├── README.md                        # Project documentation
+└── LICENSE                          # License file (optional)
 
-HOW TO RUN LOCALLY
-✅ Prerequisites:
-•	Node.js & npm installed
-•	PostgreSQL installed and running
-•	VS Code recommended
 
-BACKEND SETUP (Express.js + PostgreSQL)
 
-Create Folder
+# 🚀 HOW TO RUN LOCALLY
 
+---
+
+## ✅ Prerequisites
+
+Make sure the following tools are installed on your system:
+
+- 🟢 **Node.js** & **npm**
+- 🛢️ **PostgreSQL** (running)
+- 💻 **VS Code** (recommended)
+
+---
+
+## 🔧 BACKEND SETUP (Express.js + PostgreSQL)
+
+### 📁 Create Project Folder
+
+```bash
 mkdir mini-task-manager-backend
 cd mini-task-manager-backend
 npm init -y
 
-Install Dependencies
-npm install express pg cors dotenv
 
 Create Files
 touch server.js db.js
@@ -112,23 +132,13 @@ Open http://localhost:3000
  Backend: http://localhost:5000
  Database: PostgreSQL
 
-✅ FEATURES
-•	➕ Add tasks
-•	📝 Edit task title
-•	✅ Toggle between "pending" and "done"
-•	❌ Delete task
-•	🎨 Tailwind CSS styling
-•	🧠 Real-time updates with server
-________________________________________
-📌 TECHNOLOGIES USED
-•	Frontend: Next.js, Tailwind CSS
-•	Backend: Node.js, Express.js
-•	Database: PostgreSQL
-•	Others: Fetch API, RESTful routing
+
 ________________________________________
 
-Author:Pratheeksha R
-22/06/2025
+
+👩‍💻 Author
+Pratheeksha R
+🗓️ 22/06/2025
 
  
 
