@@ -1,13 +1,14 @@
 {
   "name": "mini-task-manager-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Fullstack Mini Task Manager - Backend + Frontend",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd ../mini-task-manager-frontend && npm install && npm run build && npm run export",
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pratheeksha R",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
