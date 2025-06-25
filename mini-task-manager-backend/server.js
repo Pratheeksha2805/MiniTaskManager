@@ -1,19 +1,28 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
 
 // Middleware
 app.use(cors());
-app.use(express.json()); // To parse JSON body
+app.use(express.json());
 
-// Routes
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, "../mini-task-manager-frontend/out")));
+
+// API Routes
 const taskRoutes = require("./routes/tasks");
 app.use("/tasks", taskRoutes);
 
-// Server listen
+// Catch-all route for frontend (excluding /tasks)
+app.get(/^\/(?!tasks).*/, (req, res) => {
+  res.sendFile(path.join(__dirname, "../mini-task-manager-frontend/out/index.html"));
+});
+
+// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(` Server is running on http://localhost:${PORT}`);
 });
