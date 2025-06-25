@@ -9,7 +9,7 @@ export default function Home() {
   // Fetch all tasks
   const fetchTasks = async () => {
     try {
-      const res = await fetch("http://localhost:5000/tasks");
+      const res = await fetch(`${process.env.f_url}/tasks`);
       const data = await res.json();
       // Sort: show pending first, then done
       const sortedTasks = data.sort((a, b) => (a.status === "done") - (b.status === "done"));
@@ -27,7 +27,7 @@ export default function Home() {
     if (!newTask.trim()) return;
 
     try {
-      await fetch("http://localhost:5000/tasks", {
+      await fetch(`${process.env.f_url}/tasks`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: newTask, status: "pending" }),
@@ -47,7 +47,7 @@ export default function Home() {
     };
 
     try {
-      await fetch(`http://localhost:5000/tasks/${task.id}`, {
+      await fetch(`${process.env.f_url}/tasks/${task.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedTask),
@@ -61,7 +61,7 @@ export default function Home() {
 
   const handleDeleteTask = async (id) => {
     try {
-      await fetch(`http://localhost:5000/tasks/${id}`, {
+      await fetch(`${process.env.f_url}/tasks/${id}`, {
         method: "DELETE",
       });
 
@@ -75,7 +75,7 @@ export default function Home() {
     if (!editTitle.trim()) return;
 
     try {
-      await fetch(`http://localhost:5000/tasks/${task.id}`, {
+      await fetch(`${process.env.f_url}/tasks/${task.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: editTitle, status: task.status }),
