@@ -6,12 +6,13 @@ export default function Home() {
   const [editingId, setEditingId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   // Fetch all tasks
   const fetchTasks = async () => {
     try {
-      const res = await fetch(`${process.env.f_url}/tasks`);
+      const res = await fetch(`${API_URL}/tasks`);
       const data = await res.json();
-      // Sort: show pending first, then done
       const sortedTasks = data.sort((a, b) => (a.status === "done") - (b.status === "done"));
       setTasks(sortedTasks);
     } catch (err) {
@@ -27,7 +28,7 @@ export default function Home() {
     if (!newTask.trim()) return;
 
     try {
-      await fetch(`${process.env.f_url}/tasks`, {
+      await fetch(`${API_URL}/tasks`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: newTask, status: "pending" }),
@@ -47,7 +48,7 @@ export default function Home() {
     };
 
     try {
-      await fetch(`${process.env.f_url}/tasks/${task.id}`, {
+      await fetch(`${API_URL}/tasks/${task.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedTask),
@@ -61,7 +62,7 @@ export default function Home() {
 
   const handleDeleteTask = async (id) => {
     try {
-      await fetch(`${process.env.f_url}/tasks/${id}`, {
+      await fetch(`${API_URL}/tasks/${id}`, {
         method: "DELETE",
       });
 
@@ -75,7 +76,7 @@ export default function Home() {
     if (!editTitle.trim()) return;
 
     try {
-      await fetch(`${process.env.f_url}/tasks/${task.id}`, {
+      await fetch(`${API_URL}/tasks/${task.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title: editTitle, status: task.status }),
